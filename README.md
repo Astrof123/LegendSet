@@ -18,7 +18,7 @@ cd <название проекта>
 ## Клонируем проект с помощью следующей команды: ##
 
 ```
-git clone https://github.com/vankad24/GameSetServer
+git clone https://github.com/Astrof123/LegendSet.git
 ```
 
 ## Проверяем работу Gunicorn: ##
