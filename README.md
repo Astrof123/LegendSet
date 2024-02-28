@@ -27,7 +27,7 @@ git clone https://github.com/vankad24/GameSetServer
 gunicorn --bind 0.0.0.0:8000 run:app
 ```
 
-# Создаем файл службы `flaskapp.service` с помощью команды `sudo nano /etc/systemd/system/flaskapp.service` и вставляем следующий текст: #
+Создаем файл службы `flaskapp.service` с помощью команды `sudo nano /etc/systemd/system/flaskapp.service` и вставляем следующий текст: 
 
 (Замените `имя_пользователя` на ваше имя пользователя.) 
 ```
