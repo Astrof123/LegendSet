@@ -11,8 +11,8 @@ pip3 install flask
 
 ```
 cd ~
-mkdir flask-app
-cd flask-app
+mkdir <название проекта>
+cd <название проекта>
 ```
 
 ## Клонируем проект с помощью следующей команды: ##
@@ -24,10 +24,10 @@ git clone https://github.com/vankad24/GameSetServer
 ## Проверяем работу Gunicorn: ##
 
 ```
-gunicorn --bind 0.0.0.0:8000 wsgi:app
+gunicorn --bind 0.0.0.0:8000 run:app
 ```
 
-## Создаем файл службы `flaskapp.service` с помощью команды `sudo nano /etc/systemd/system/flaskapp.service` и вставляем следующий текст: ##
+# Создаем файл службы `flaskapp.service` с помощью команды `sudo nano /etc/systemd/system/flaskapp.service` и вставляем следующий текст: #
 
 (Замените `имя_пользователя` на ваше имя пользователя.) 
 ```
@@ -38,9 +38,9 @@ After=network.target
 [Service]
 User=имя_пользователя
 Group=имя_пользователя
-WorkingDirectory=/home/имя_пользователя/flask-app
+WorkingDirectory=/home/имя_пользователя/<название проекта>
 ExecStart=/usr/bin/gunicorn --workers 3 \
---bind unix:/home/имя_пользователя/flask-app/flaskapp.sock wsgi:app
+--bind unix:/home/имя_пользователя/<название проекта>/flaskapp.sock run:app
 
 [Install]
 WantedBy=multi-user.target
@@ -64,7 +64,7 @@ sudo systemctl enable flaskapp
 Редактируем содержимое файла следующим образом:
 ```
 location / {
-    proxy_pass http://unix:/home/имя_пользователя/flask-app/flaskapp.sock;
+    proxy_pass http://unix:/home/имя_пользователя/<название проекта>/flaskapp.sock;
 }
 ```
 
